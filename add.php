@@ -26,13 +26,13 @@ $title = "Dodaj kontakt";
 
 <body>
 
-    <h1><?php echo $title; ?></h1>
-
     <?php
 
     require_once("nav.php");
 
     ?>
+
+    <h1><?php echo $title; ?></h1>
 
     <div class="form">
         <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">

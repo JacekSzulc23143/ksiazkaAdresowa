@@ -10,7 +10,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	/* height: 80vh; */
+	height: 80vh;  /* wyśrodkowanie w pionie */
 	background-color: #f5f5f5;
 	color: #333;
 	font-family: "Arial", sans-serif;
@@ -113,7 +113,8 @@ input::placeholder {
 }
 
 a {
-	border: 2px solid #333;
+	/* border: 2px solid #333; */
+	border-bottom: 2px solid #333;
 	color: #333;
 	text-decoration: none;
 	margin: 10px;

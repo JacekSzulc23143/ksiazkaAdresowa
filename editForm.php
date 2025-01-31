@@ -46,13 +46,13 @@ if ($id_polaczenia->connect_error) {
 
 <body>
 
-    <h1><?php echo $title; ?></h1>
-
     <?php
 
     require_once("nav.php");
 
     ?>
+
+    <h1><?php echo $title; ?></h1>
 
     <?php
 
@@ -76,7 +76,7 @@ if ($id_polaczenia->connect_error) {
                 <input type="email" name="email" id="email" value="<?php echo $wiersz["email"]; ?>">
 
                 <div class="container">
-                    <input class="btn btn-primary" type="submit" value="Zaktualizuj" name="submit">
+                    <input class="btn btn-primary" type="submit" value="Aktualizuj" name="submit">
                     <input class="btn btn-warning" type="reset" value="Wyczyść">
                 </div>
 
@@ -113,7 +113,7 @@ if ($id_polaczenia->connect_error) {
                     $sql_edit->execute();
                     $sql_edit->close();
 
-                    // header("location: index.php");
+                    header("location: index.php");
                 } else {
                     echo '<p id="error">Wypełnij wszystkie pola!</p>';
                 }

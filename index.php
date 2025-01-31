@@ -43,13 +43,13 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    <h1><?php echo $title; ?></h1>
-
     <?php
 
     require_once("nav.php");
 
     ?>
+
+    <h1><?php echo $title; ?></h1>
 
     <div class="wrapper">
         <p>Połączenie z bazą:
@@ -97,9 +97,15 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         </p>
     </div>
 
-    <footer class="footer">
+    <!-- <footer class="footer">
         <p class="footer__bottom-text">JS CKU_Sopot <span class="footer_year"></span></p>
-    </footer>
+    </footer> -->
+
+    <?php
+
+    require_once("footer.php");
+
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
