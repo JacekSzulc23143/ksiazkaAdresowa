@@ -8,8 +8,8 @@ require("config.php");
 $title = "Książka adresowa";
 
 $flag = FALSE;
-$id_polaczenia = mysqli_connect($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
-if (!($id_polaczenia)) {
+$id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
+if ($id_polaczenia->connect_error) {
     die("Błąd połączenia z bazą");
 } else {
     // echo $_GET["id"];
@@ -96,13 +96,14 @@ if (!($id_polaczenia)) {
         </form>
     </div> -->
 
-    <div class="wrapper">
+    <!-- <div class="wrapper"> -->
 
         <?php
 
         //mysqli_connect(serwer, użytkownik, hasło, nazwa_bazy);
-        if (!($id_polaczenia = mysqli_connect($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]))) {
-            echo "<h1>Błąd połączenia</h1>";
+        $id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
+        if ($id_polaczenia->connect_error) {
+            // echo "<h1>Błąd połączenia</h1>";
             die("<h1>Błąd połączenia z bazą</h1>");
         } else {
             // wyświetlenie danych z formularza
@@ -138,7 +139,7 @@ if (!($id_polaczenia)) {
 
         ?>
 
-    </div>
+    <!-- </div> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>

@@ -48,13 +48,14 @@ $title = "Książka adresowa";
         </form>
     </div>
 
-    <div class="wrapper">
+    <!-- <div class="wrapper"> -->
 
         <?php
 
         //mysqli_connect(serwer, użytkownik, hasło, nazwa_bazy);
-        if (!($id_polaczenia = mysqli_connect($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]))) {
-            echo "<h1>Błąd połączenia</h1>";
+        $id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
+        if ($id_polaczenia->connect_error) {
+            // echo "<h1>Błąd połączenia</h1>";
             die("<h1>Błąd połączenia z bazą</h1>");
         } else {
             // wyświetlenie danych z formularza
@@ -70,8 +71,13 @@ $title = "Książka adresowa";
                 if (preg_match("/^[a-zA-Z.\s]+$/u", $contact["name_surname"])) {
                     if (strlen($contact["name_surname"]) >= 5 && strlen($contact["phone"]) > 7 && ($contact["email"]) > 5) {
 
-                        $sql_add = "INSERT INTO contacts (contacts.name, contacts.phone, contacts.email) VALUES ('$contact[name_surname]', '$contact[phone]', '$contact[email]');";
-                        mysqli_query($id_polaczenia, $sql_add);
+                        // $sql_add = "INSERT INTO contacts (contacts.name, contacts.phone, contacts.email) VALUES ('$contact[name_surname]', '$contact[phone]', '$contact[email]');";
+                        // mysqli_query($id_polaczenia, $sql_add);
+
+                        $sql_add = $id_polaczenia->prepare("INSERT INTO contacts (contacts.name, contacts.phone, contacts.email) VALUES (?,?,?)");
+                        $sql_add->bind_param("sis", $contact["name_surname"], $contact["phone"], $contact["email"]);
+                        $sql_add->execute();
+                        $sql_add->close();
                         
                         header("location: index.php");
                     }
@@ -84,7 +90,7 @@ $title = "Książka adresowa";
 
         ?>
 
-    </div>
+    <!-- </div> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>

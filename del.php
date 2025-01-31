@@ -9,8 +9,8 @@ $title = "Książka adresowa";
 
 if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     // echo $_POST["id"];
-    $id_polaczenia = mysqli_connect($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
-    if (!($id_polaczenia)) {
+    $id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
+    if ($id_polaczenia->connect_error) {
         die("Błąd połączenia z bazą");
     } else {
         $sqlDelete = $id_polaczenia->prepare("DELETE FROM contacts WHERE id=?");
@@ -55,8 +55,9 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
 
         //mysqli_connect(serwer, użytkownik, hasło, nazwa_bazy);
-        if (!($id_polaczenia = mysqli_connect($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]))) {
-            echo "<h1>Błąd połączenia</h1>";
+        $id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
+        if ($id_polaczenia->connect_error) {
+            // echo "<h1>Błąd połączenia</h1>";
             die("<h1>Błąd połączenia z bazą</h1>");
         } else {
             $sql = "SELECT * FROM contacts";
