@@ -57,7 +57,6 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <?php
 
-                //mysqli_connect(serwer, użytkownik, hasło, nazwa_bazy);
                 $id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
                 if ($id_polaczenia->connect_error) {
                     die("<h1>Błąd połączenia z bazą</h1>");
@@ -98,10 +97,6 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
             </p>
         </div>
     </main>
-
-    <!-- <footer class="footer">
-        <p class="footer__bottom-text">JS CKU_Sopot <span class="footer_year"></span></p>
-    </footer> -->
 
     <?php
 

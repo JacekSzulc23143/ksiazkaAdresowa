@@ -94,7 +94,6 @@ if ($id_polaczenia->connect_error) {
 
     <?php
 
-    //mysqli_connect(serwer, użytkownik, hasło, nazwa_bazy);
     $id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
     if ($id_polaczenia->connect_error) {
         die("<h1>Błąd połączenia z bazą</h1>");

@@ -37,7 +37,7 @@ $title = "O mnie";
                 Kwalifikacja: Tworzenie i administrowanie stronami i aplikacjami internetowymi oraz bazami danych.
             </p>
             <p>
-                Aplikacja <i>"Książa adresowa"</i> - zaliczenie przedmiotu "Programowanie aplikacji internetowych".
+                Aplikacja <b><i>"Książa adresowa"</i></b> - zaliczenie przedmiotu "Programowanie aplikacji internetowych".
             </p>
             <p>
                 Prowadzący zajęcia: <span>Pan Marcin Putra.</span>

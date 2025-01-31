@@ -12,19 +12,6 @@ body {
 }
 
 /* logo książkaADRESOWA */
-.nav-items a {
-	padding: 0 30px;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-weight: bold;
-	transition: color 0.3s;
-	color: #333;
-}
-
-.nav-items a:hover {
-	color: #3498db;
-}
-
 .title-text h1 {
 	font-size: 30px;
 	margin: 20px auto;
@@ -51,10 +38,17 @@ header {
 	z-index: 10;
 }
 
-.wrapper0 {
-	margin: 0 auto;
-	width: 100%;
-	max-width: 1200px;
+.nav-items a {
+	padding: 0 30px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	transition: color 0.3s;
+	color: #333;
+}
+
+.nav-items a:hover {
+	color: #3498db;
 }
 
 /* main */
@@ -64,6 +58,7 @@ main {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	padding-bottom: 60px;
 }
 
 /* tytuł w main */
@@ -71,7 +66,7 @@ h2 {
 	font-size: 24px;
 	font-weight: bold;
 	text-transform: uppercase;
-	margin: 80px;
+	margin: 60px;
 	color: #3498db;
 }
 
