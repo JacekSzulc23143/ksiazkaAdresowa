@@ -32,28 +32,31 @@ $title = "Dodaj kontakt";
 
     ?>
 
-    <h1><?php echo $title; ?></h1>
+    <main>
+        <h1><?php echo $title; ?></h1>
 
-    <div class="form">
-        <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
-            <div>
-                <label for="name_surname">Imię i nazwisko:</label>
-                <input type="text" name="name_surname" id="name_surname" placeholder="Wpisz imię i nazwisko" autofocus>
-            </div>
-            <div>
-                <label for="phone">Telefon:</label>
-                <input type="number" name="phone" id="phone" placeholder="Wpisz telefon">
-            </div>
-            <div>
-                <label for="email">e-mail:</label>
-                <input type="email" name="email" id="email" placeholder="Wpisz email">
-            </div>
-            <div class="container">
-                <input class="btn btn-primary" type="submit" name="submit" value="Dodaj">
-                <input class="btn btn-warning" type="reset" value="Wyczyść">
-            </div>
-        </form>
-    </div>
+        <div class="form">
+            <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+                <div>
+                    <label for="name_surname">Imię i nazwisko:</label>
+                    <input type="text" name="name_surname" id="name_surname" placeholder="Wpisz imię i nazwisko" autofocus>
+                </div>
+                <div>
+                    <label for="phone">Telefon:</label>
+                    <input type="number" name="phone" id="phone" placeholder="Wpisz telefon">
+                </div>
+                <div>
+                    <label for="email">e-mail:</label>
+                    <input type="email" name="email" id="email" placeholder="Wpisz e-mail">
+                </div>
+                <div class="container">
+                    <input class="btn btn-primary" type="submit" name="submit" value="Dodaj">
+                    <input class="btn btn-warning" type="reset" value="Wyczyść">
+                </div>
+            </form>
+        </div>
+
+    </main>
 
     <?php
 
@@ -89,6 +92,12 @@ $title = "Dodaj kontakt";
         }
     }
     mysqli_close($id_polaczenia);
+
+    ?>
+
+    <?php
+
+    require_once("footer.php");
 
     ?>
 

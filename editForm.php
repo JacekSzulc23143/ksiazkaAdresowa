@@ -52,42 +52,45 @@ if ($id_polaczenia->connect_error) {
 
     ?>
 
-    <h1><?php echo $title; ?></h1>
+    <main>
+        <h1><?php echo $title; ?></h1>
 
-    <?php
+        <?php
 
-    if ($flag) {
+        if ($flag) {
 
-    ?>
+        ?>
 
-        <div class="form">
-            <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+            <div class="form">
+                <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
 
-                <label for="name_surname">ID:</label>
-                <input type="number" name="id" id="id" value="<?php echo $wiersz["id"]; ?>">
+                    <label for="name_surname">ID:</label>
+                    <input type="number" name="id" id="id" value="<?php echo $wiersz["id"]; ?>">
 
-                <label for="name_surname">Imię i nazwisko:</label>
-                <input type="text" name="name_surname" id="name_surname" value="<?php echo $wiersz["name"]; ?>">
+                    <label for="name_surname">Imię i nazwisko:</label>
+                    <input type="text" name="name_surname" id="name_surname" value="<?php echo $wiersz["name"]; ?>">
 
-                <label for="phone">Telefon:</label>
-                <input type="number" name="phone" id="phone" value="<?php echo $wiersz["phone"]; ?>">
+                    <label for="phone">Telefon:</label>
+                    <input type="number" name="phone" id="phone" value="<?php echo $wiersz["phone"]; ?>">
 
-                <label for="email">e-mail:</label>
-                <input type="email" name="email" id="email" value="<?php echo $wiersz["email"]; ?>">
+                    <label for="email">e-mail:</label>
+                    <input type="email" name="email" id="email" value="<?php echo $wiersz["email"]; ?>">
 
-                <div class="container">
-                    <input class="btn btn-primary" type="submit" value="Aktualizuj" name="submit">
-                    <input class="btn btn-warning" type="reset" value="Wyczyść">
-                </div>
+                    <div class="container">
+                        <input class="btn btn-primary" type="submit" value="Aktualizuj" name="submit">
+                        <input class="btn btn-warning" type="reset" value="Wyczyść">
+                    </div>
 
-            </form>
-        </div>
+                </form>
+            </div>
 
-    <?php
+        <?php
 
-    }
+        }
 
-    ?>
+        ?>
+
+    </main>
 
     <?php
 
@@ -123,6 +126,12 @@ if ($id_polaczenia->connect_error) {
         }
     }
     mysqli_close($id_polaczenia);
+
+    ?>
+
+    <?php
+
+    require_once("footer.php");
 
     ?>
 

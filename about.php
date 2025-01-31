@@ -26,22 +26,25 @@ $title = "O mnie";
 
     ?>
 
-    <h1><?php echo $title; ?></h1>
+    <main>
+        <h1><?php echo $title; ?></h1>
 
-    <div class="form">
-        <p>
-            Jestem kursantem w Centrum Kształcenia Ustawicznego w Sopocie INF.03 - Luty 2024 r.
-        </p>
-        <p>
-            Kierunek: Tworzenie i administrowanie stronami i aplikacjami internetowymi oraz bazami danych.
-        </p>
-        <p>
-            Aplikacja <i>"Książa adresowa"</i> - zaliczenie przedmiotu "Programowanie aplikacji internetowych".
-        </p>
-        <p>
-            Prowadzący zajęcia: Pan Marcin Putra.
-        </p>
-    </div>
+        <div class="wrapper">
+            <p>
+                Jestem kursantem w Centrum Kształcenia Ustawicznego w Sopocie INF.03 - Luty 2024 r.
+            </p>
+            <p>
+                Kwalifikacja: Tworzenie i administrowanie stronami i aplikacjami internetowymi oraz bazami danych.
+            </p>
+            <p>
+                Aplikacja <i>"Książa adresowa"</i> - zaliczenie przedmiotu "Programowanie aplikacji internetowych".
+            </p>
+            <p>
+                Prowadzący zajęcia: <span>Pan Marcin Putra.</span>
+            </p>
+        </div>
+
+    </main>
 
     <?php
 
