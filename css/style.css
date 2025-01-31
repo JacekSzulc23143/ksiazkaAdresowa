@@ -166,3 +166,13 @@ footer {
 	text-align: center;
 	background-color: #ddd;
 }
+
+/* dark mode */
+.dark {
+	background-color: #202124;
+	color: #ddd;
+}
+
+#toggle-theme {
+	cursor: pointer;
+}
