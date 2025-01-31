@@ -6,7 +6,7 @@ require("config.php");
 
 <?php
 
-$title = "Książka adresowa";
+$title = "Dodaj kontakt";
 
 ?>
 
@@ -17,9 +17,11 @@ $title = "Książka adresowa";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <?php
+
+    require_once("link.php");
+
+    ?>
 </head>
 
 <body>
@@ -47,7 +49,7 @@ $title = "Książka adresowa";
                 <input type="email" name="email" id="email" placeholder="Wpisz email">
             </div>
             <div class="container">
-                <input class="btn btn-primary" type="submit" name="submit" value="Dodaj kontakt">
+                <input class="btn btn-primary" type="submit" name="submit" value="Dodaj">
                 <input class="btn btn-warning" type="reset" value="Wyczyść">
             </div>
         </form>

@@ -6,7 +6,7 @@ require("config.php");
 
 <?php
 
-$title = "Książka adresowa";
+$title = "Edytuj kontakt";
 
 $flag = FALSE;
 
@@ -37,9 +37,11 @@ if ($id_polaczenia->connect_error) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <?php
+
+    require_once("link.php");
+
+    ?>
 </head>
 
 <body>
@@ -74,7 +76,7 @@ if ($id_polaczenia->connect_error) {
                 <input type="email" name="email" id="email" value="<?php echo $wiersz["email"]; ?>">
 
                 <div class="container">
-                    <input class="btn btn-success" type="submit" value="Zaktualizuj" name="submit">
+                    <input class="btn btn-primary" type="submit" value="Zaktualizuj" name="submit">
                     <input class="btn btn-warning" type="reset" value="Wyczyść">
                 </div>
 
@@ -111,7 +113,7 @@ if ($id_polaczenia->connect_error) {
                     $sql_edit->execute();
                     $sql_edit->close();
 
-                    header("location: index.php");
+                    // header("location: index.php");
                 } else {
                     echo '<p id="error">Wypełnij wszystkie pola!</p>';
                 }

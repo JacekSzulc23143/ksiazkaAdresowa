@@ -34,9 +34,11 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <?php
+
+    require_once("link.php");
+
+    ?>
 </head>
 
 <body>
@@ -74,7 +76,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
                     <td>
                         <form action="editForm.php" method="get">
                             <input type="hidden" name="id" value="<?php echo $element["id"]; ?>">
-                            <input class="btn btn-outline-success" type="submit" name="submit" value="Edytuj">
+                            <input class="btn btn-primary" type="submit" name="submit" value="Edytuj">
                         </form>
                     </td>
                     <td>
