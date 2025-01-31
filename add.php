@@ -38,15 +38,15 @@ $title = "Dodaj kontakt";
         <div class="form">
             <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
                 <div>
-                    <label for="name_surname">Imię i nazwisko:</label>
+                    <label for="name_surname"><i class="fa-solid fa-person-circle-plus"></i> Imię i nazwisko:</label>
                     <input type="text" name="name_surname" id="name_surname" placeholder="Wpisz imię i nazwisko" autofocus>
                 </div>
                 <div>
-                    <label for="phone">Telefon:</label>
+                    <label for="phone"><i class="fa-solid fa-phone"></i> Telefon:</label>
                     <input type="number" name="phone" id="phone" placeholder="Wpisz telefon">
                 </div>
                 <div>
-                    <label for="email">e-mail:</label>
+                    <label for="email"><i class="fa-solid fa-at"></i> e-mail:</label>
                     <input type="email" name="email" id="email" placeholder="Wpisz e-mail">
                 </div>
                 <div class="container">
@@ -74,7 +74,7 @@ $title = "Dodaj kontakt";
             );
 
             if (preg_match("/^[a-zA-Z.\s]+$/u", $contact["name_surname"])) {
-                if (strlen($contact["name_surname"]) >= 5 && strlen($contact["phone"]) > 7 && ($contact["email"]) > 5) {
+                if (strlen($contact["name_surname"]) >= 5 && strlen($contact["phone"]) >= 4) {
                     // if (!empty($contact["name_surname"]) && !empty($contact["phone"])) {
 
                     $sql_add = $id_polaczenia->prepare("INSERT INTO contacts (contacts.name, contacts.phone, contacts.email) VALUES (?,?,?)");

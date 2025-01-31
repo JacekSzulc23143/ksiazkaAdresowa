@@ -61,6 +61,8 @@ header {
 main {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
 }
 
@@ -154,6 +156,7 @@ input::placeholder {
 
 /* tekst error */
 #error {
+	padding: 20px;
 	text-align: center;
 	font-size: medium;
 	color: red;

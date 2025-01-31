@@ -64,16 +64,16 @@ if ($id_polaczenia->connect_error) {
             <div class="form">
                 <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
 
-                    <label for="name_surname">ID:</label>
+                    <label for="name_surname"><i class="fa-solid fa-id-badge"></i> ID:</label>
                     <input type="number" name="id" id="id" value="<?php echo $wiersz["id"]; ?>">
 
-                    <label for="name_surname">Imię i nazwisko:</label>
+                    <label for="name_surname"><i class="fa-solid fa-person-circle-plus"></i> Imię i nazwisko:</label>
                     <input type="text" name="name_surname" id="name_surname" value="<?php echo $wiersz["name"]; ?>">
 
-                    <label for="phone">Telefon:</label>
+                    <label for="phone"><i class="fa-solid fa-phone"></i> Telefon:</label>
                     <input type="number" name="phone" id="phone" value="<?php echo $wiersz["phone"]; ?>">
 
-                    <label for="email">e-mail:</label>
+                    <label for="email"><i class="fa-solid fa-at"></i> e-mail:</label>
                     <input type="email" name="email" id="email" value="<?php echo $wiersz["email"]; ?>">
 
                     <div class="container">
@@ -109,7 +109,7 @@ if ($id_polaczenia->connect_error) {
             );
 
             if (preg_match("/^[a-zA-Z.\s]+$/u", $contact["name_surname"])) {
-                if (strlen($contact["name_surname"]) >= 5 && strlen($contact["phone"]) > 7 && ($contact["email"]) > 5) {
+                if (strlen($contact["name_surname"]) >= 5 && strlen($contact["phone"]) >= 4) {
 
                     $sql_edit = $id_polaczenia->prepare("UPDATE contacts SET name = ?, phone = ?, email = ? WHERE id = ?;");
                     $sql_edit->bind_param("sisi", $contact["name_surname"], $contact["phone"], $contact["email"], $contact["id"]);
