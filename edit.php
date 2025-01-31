@@ -1,5 +1,13 @@
 <?php
+
+require("config.php");
+
+?>
+
+<?php
+
 $title = "Książka adresowa";
+
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +31,6 @@ $title = "Książka adresowa";
 
     ?>
 
-    <?php
-
-    require("config.php");
-
-    ?>
-
     <div class="form">
 
         <?php
@@ -36,13 +38,12 @@ $title = "Książka adresowa";
         //mysqli_connect(serwer, użytkownik, hasło, nazwa_bazy);
         $id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
         if ($id_polaczenia->connect_error) {
-            // echo "<h1>Błąd połączenia</h1>";
             die("<h1>Błąd połączenia z bazą</h1>");
         } else {
             $sql = "SELECT * FROM contacts";
             $res = mysqli_query($id_polaczenia, $sql);
             echo "<table>";
-            echo "<thead><tr><th>ID</th><th>Imię i Nazwisko</th> <th>Telefon</th><th>e-mail</th></tr></thead>";
+            echo "<thead><tr><th>ID</th><th>Imię i Nazwisko</th><th>Telefon</th><th>e-mail</th></tr></thead>";
             foreach ($res as $element) {
                 echo "<tr>";
                 echo "<td>" . $element["id"] . "</td>";

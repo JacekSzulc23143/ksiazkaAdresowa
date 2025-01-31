@@ -1,5 +1,13 @@
 <?php
+
+require("config.php");
+
+?>
+
+<?php
+
 $title = "Książka adresowa";
+
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +31,6 @@ $title = "Książka adresowa";
 
     ?>
 
-    <?php
-
-    require("config.php");
-
-    ?>
-
     <div class="form">
         <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
             <div>
@@ -48,49 +50,39 @@ $title = "Książka adresowa";
         </form>
     </div>
 
-    <!-- <div class="wrapper"> -->
+    <?php
 
-        <?php
+    //mysqli_connect(serwer, użytkownik, hasło, nazwa_bazy);
+    $id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
+    if ($id_polaczenia->connect_error) {
+        die("<h1>Błąd połączenia z bazą</h1>");
+    } else {
+        // wyświetlenie danych z formularza
+        if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+            $contact = array(
+                "name_surname"       => trim(htmlspecialchars($_POST["name_surname"])),
+                "phone"       => trim(htmlspecialchars($_POST["phone"])),
+                "email" => trim(htmlspecialchars($_POST["email"]))
+            );
 
-        //mysqli_connect(serwer, użytkownik, hasło, nazwa_bazy);
-        $id_polaczenia = new mysqli($dane["serwer"], $dane["uzytkownik"], $dane["haslo"], $dane["baza"]);
-        if ($id_polaczenia->connect_error) {
-            // echo "<h1>Błąd połączenia</h1>";
-            die("<h1>Błąd połączenia z bazą</h1>");
-        } else {
-            // wyświetlenie danych z formularza
-            if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-                // echo $_POST["name_surname"] . " " . $_POST["phone"] . " " . $_POST["email"];
-                // trim usuwa zbędne znaki np. spacje
-                $contact = array(
-                    "name_surname"       => trim(htmlspecialchars($_POST["name_surname"])),
-                    "phone"       => trim(htmlspecialchars($_POST["phone"])),
-                    "email" => trim(htmlspecialchars($_POST["email"]))
-                );
+            if (preg_match("/^[a-zA-Z.\s]+$/u", $contact["name_surname"])) {
+                if (strlen($contact["name_surname"]) >= 5 && strlen($contact["phone"]) > 7 && ($contact["email"]) > 5) {
 
-                if (preg_match("/^[a-zA-Z.\s]+$/u", $contact["name_surname"])) {
-                    if (strlen($contact["name_surname"]) >= 5 && strlen($contact["phone"]) > 7 && ($contact["email"]) > 5) {
+                    $sql_add = $id_polaczenia->prepare("INSERT INTO contacts (contacts.name, contacts.phone, contacts.email) VALUES (?,?,?)");
+                    $sql_add->bind_param("sis", $contact["name_surname"], $contact["phone"], $contact["email"]);
+                    $sql_add->execute();
+                    $sql_add->close();
 
-                        // $sql_add = "INSERT INTO contacts (contacts.name, contacts.phone, contacts.email) VALUES ('$contact[name_surname]', '$contact[phone]', '$contact[email]');";
-                        // mysqli_query($id_polaczenia, $sql_add);
-
-                        $sql_add = $id_polaczenia->prepare("INSERT INTO contacts (contacts.name, contacts.phone, contacts.email) VALUES (?,?,?)");
-                        $sql_add->bind_param("sis", $contact["name_surname"], $contact["phone"], $contact["email"]);
-                        $sql_add->execute();
-                        $sql_add->close();
-                        
-                        header("location: index.php");
-                    }
-                } else {
-                    echo "Tekst zawiera inne znaki";
+                    header("location: index.php");
                 }
+            } else {
+                echo "Tekst zawiera inne znaki";
             }
         }
-        mysqli_close($id_polaczenia);
+    }
+    mysqli_close($id_polaczenia);
 
-        ?>
-
-    <!-- </div> -->
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
