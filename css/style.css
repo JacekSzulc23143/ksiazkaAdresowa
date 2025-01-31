@@ -149,6 +149,10 @@ input::placeholder {
 	color: #3498db;
 }
 
+.fa-brands {
+	color: #212529bf;
+}
+
 /* tekst error */
 #error {
 	padding: 20px;
