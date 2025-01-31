@@ -38,6 +38,7 @@ if ($id_polaczenia->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -60,16 +61,23 @@ if ($id_polaczenia->connect_error) {
         <div class="form">
             <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
 
+                <label for="name_surname">ID:</label>
                 <input type="number" name="id" id="id" value="<?php echo $wiersz["id"]; ?>">
 
+                <label for="name_surname">Imię i nazwisko:</label>
                 <input type="text" name="name_surname" id="name_surname" value="<?php echo $wiersz["name"]; ?>">
 
+                <label for="phone">Telefon:</label>
                 <input type="number" name="phone" id="phone" value="<?php echo $wiersz["phone"]; ?>">
 
+                <label for="email">e-mail:</label>
                 <input type="email" name="email" id="email" value="<?php echo $wiersz["email"]; ?>">
 
-                <input type="submit" value="Zaktualizuj" name="submit">
-                <input type="reset" value="Wyczyść">
+                <div class="container">
+                    <input class="btn btn-success" type="submit" value="Zaktualizuj" name="submit">
+                    <input class="btn btn-warning" type="reset" value="Wyczyść">
+                </div>
+
             </form>
         </div>
 
@@ -104,9 +112,11 @@ if ($id_polaczenia->connect_error) {
                     $sql_edit->close();
 
                     header("location: index.php");
+                } else {
+                    echo '<p id="error">Wypełnij wszystkie pola!</p>';
                 }
             } else {
-                echo "Tekst zawiera inne znaki";
+                echo '<p id="error">Tekst zawiera inne znaki</p>';
             }
         }
     }

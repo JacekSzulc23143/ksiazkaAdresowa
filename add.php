@@ -18,6 +18,7 @@ $title = "Książka adresowa";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -34,19 +35,21 @@ $title = "Książka adresowa";
     <div class="form">
         <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
             <div>
-                <label for="name_surname">Podaj imię i nazwisko:</label>
+                <label for="name_surname">Imię i nazwisko:</label>
                 <input type="text" name="name_surname" id="name_surname" placeholder="Wpisz imię i nazwisko" autofocus>
             </div>
             <div>
-                <label for="phone">Podaj telefon:</label>
+                <label for="phone">Telefon:</label>
                 <input type="number" name="phone" id="phone" placeholder="Wpisz telefon">
             </div>
             <div>
-                <label for="email">Podaj email:</label>
+                <label for="email">e-mail:</label>
                 <input type="email" name="email" id="email" placeholder="Wpisz email">
             </div>
-            <input class="btn" type="submit" name="submit" value="Dodaj kontakt">
-            <input type="reset" value="Wyczyść">
+            <div class="container">
+                <input class="btn btn-primary" type="submit" name="submit" value="Dodaj kontakt">
+                <input class="btn btn-warning" type="reset" value="Wyczyść">
+            </div>
         </form>
     </div>
 
@@ -67,6 +70,7 @@ $title = "Książka adresowa";
 
             if (preg_match("/^[a-zA-Z.\s]+$/u", $contact["name_surname"])) {
                 if (strlen($contact["name_surname"]) >= 5 && strlen($contact["phone"]) > 7 && ($contact["email"]) > 5) {
+                    // if (!empty($contact["name_surname"]) && !empty($contact["phone"])) {
 
                     $sql_add = $id_polaczenia->prepare("INSERT INTO contacts (contacts.name, contacts.phone, contacts.email) VALUES (?,?,?)");
                     $sql_add->bind_param("sis", $contact["name_surname"], $contact["phone"], $contact["email"]);
@@ -74,9 +78,11 @@ $title = "Książka adresowa";
                     $sql_add->close();
 
                     header("location: index.php");
+                } else {
+                    echo '<p id="error">Wypełnij wszystkie pola!</p>';
                 }
             } else {
-                echo "Tekst zawiera inne znaki";
+                echo '<p id="error">Tekst zawiera inne znaki</p>';
             }
         }
     }

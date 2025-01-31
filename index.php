@@ -35,6 +35,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -48,7 +49,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
     ?>
 
-    <div class="form">
+    <div class="wrapper">
         <p>Połączenie z bazą:
 
             <?php
@@ -58,11 +59,11 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
             if ($id_polaczenia->connect_error) {
                 die("<h1>Błąd połączenia z bazą</h1>");
             } else {
-                echo "contacts_db";
+                echo "contacts_db" . ' <i class="fa-regular fa-circle-dot fa-fade"></i>';
                 $sql = "SELECT * FROM contacts";
                 $res = mysqli_query($id_polaczenia, $sql);
-                echo "<table>";
-                echo "<thead><tr><th>ID</th><th>Imię i Nazwisko</th><th>Telefon</th><th>e-mail</th><th>Edycja</th><th>Usuwanie</th></tr></thead>";
+                echo '<table class="table table-hover">';
+                echo '<thead><tr><th>ID</th><th>Imię i Nazwisko</th><th>Telefon</th><th>e-mail</th><th colspan="2">Ustawienia</th></tr></thead>';
                 foreach ($res as $element) {
                     echo "<tr>";
                     echo "<td>" . $element["id"] . "</td>";
@@ -73,13 +74,13 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
                     <td>
                         <form action="editForm.php" method="get">
                             <input type="hidden" name="id" value="<?php echo $element["id"]; ?>">
-                            <input type="submit" name="submit" value="Edytuj">
+                            <input class="btn btn-outline-success" type="submit" name="submit" value="Edytuj">
                         </form>
                     </td>
                     <td>
                         <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
                             <input type="hidden" name="id" value="<?php echo $element["id"]; ?>">
-                            <input type="submit" name="submit" value="Usuń">
+                            <input class="btn btn-danger" type="submit" name="submit" value="Usuń">
                         </form>
                     </td>
             <?php
