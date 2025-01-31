@@ -11,6 +11,15 @@
         <li class="nav-item"><a href="about.php#" class="nav-link">O mnie</a></li>
     </ul>
 </header> -->
+<?php
+
+$titleNav = "książka<span>adresowa</span>";
+
+?>
+
+<div class="title-text">
+    <h1><?php echo $titleNav; ?></h1>
+</div>
 
 <header>
     <nav>

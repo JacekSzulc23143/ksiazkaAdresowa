@@ -27,7 +27,7 @@ $title = "O mnie";
     ?>
 
     <main>
-        <h1><?php echo $title; ?></h1>
+        <h2><?php echo $title; ?></h2>
 
         <div class="wrapper">
             <p>

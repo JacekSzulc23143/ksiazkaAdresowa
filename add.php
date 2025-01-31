@@ -33,7 +33,7 @@ $title = "Dodaj kontakt";
     ?>
 
     <main>
-        <h1><?php echo $title; ?></h1>
+        <h2><?php echo $title; ?></h2>
 
         <div class="form">
             <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">

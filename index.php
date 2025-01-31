@@ -6,7 +6,7 @@ require("config.php");
 
 <?php
 
-$title = "Książka adresowa";
+$title = "Lista kontaktów";
 
 if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -50,7 +50,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <main>
-        <h1><?php echo $title; ?></h1>
+        <h2><?php echo $title; ?></h2>
 
         <div class="wrapper">
             <p>Połączenie z bazą:
